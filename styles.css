@@ -11,6 +11,7 @@ body {
   background: radial-gradient(circle at top, #1e293b, #020617);
   color: #fff;
   padding: 20px;
+  min-height: 100vh;
 }
 
 /* TÍTULO */
@@ -19,6 +20,7 @@ body {
   font-size: 2.8rem;
   margin-bottom: 40px;
   font-weight: bold;
+  letter-spacing: 1px;
 }
 
 /* GRID */
@@ -30,19 +32,17 @@ body {
 
 /* CARD */
 .card {
-  display: block;
   position: relative;
   border-radius: 16px;
   overflow: hidden;
   background: #0f172a;
-  text-decoration: none;
-
-  transition: 0.4s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* HOVER */
 .card:hover {
   transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
 }
 
 /* OVERLAY */
@@ -56,7 +56,8 @@ body {
   border-radius: 10px;
   font-size: 0.9rem;
   opacity: 0;
-  transition: 0.3s;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
 .card:hover::after {
@@ -78,9 +79,37 @@ body {
   border: none;
 }
 
+/* EFECTO SOBRE VIDEO */
+.card:hover iframe {
+  filter: brightness(0.7);
+}
+
+/* LINK */
+.card a {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  color: #38bdf8;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+/* ACCESIBILIDAD */
+.card:focus-within {
+  outline: 2px solid #38bdf8;
+}
+
 /* RESPONSIVE */
 @media (max-width: 500px) {
   .title {
     font-size: 1.8rem;
+  }
+
+  .container {
+    gap: 15px;
   }
 }
